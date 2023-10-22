@@ -5,7 +5,7 @@ from astral import LocationInfo
 from astral.sun import sun
 
 
-def main():
+def main() -> None:
     city_name = "General Roca"
     latitude = -39.0007
     longitude = -67.6205
