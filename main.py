@@ -5,7 +5,7 @@ from astral import LocationInfo
 from astral.sun import sun
 
 
-def main() -> None:
+def calculate() -> dict[str, str]:
     city_name = "General Roca"
     latitude = -39.0007
     longitude = -67.6205
@@ -24,11 +24,19 @@ def main() -> None:
     evening_civil_twilight = s["dusk"]
     evening_civil_twilight = evening_civil_twilight.strftime('%H:%M')
 
+    return {
+        "Amanecer Aeronáutico": str(morning_civil_twilight),
+        "Amanecer": str(sunrise),
+        "Atardecer": str(sunset),
+        "Atardecer Aeronáutico": str(evening_civil_twilight)
+    }
+
+
+def main():
+    data = calculate()
     print()
-    print(f"Amanecer Aeronáutico : {morning_civil_twilight}")
-    print(f"Amanecer             : {sunrise}")
-    print(f"Atardecer            : {sunset}")
-    print(f"Atardecer Aeronáutico: {evening_civil_twilight}")
+    for key in data:
+        print(f"{key}: {data[key]}")
 
 
 if __name__ == "__main__":
